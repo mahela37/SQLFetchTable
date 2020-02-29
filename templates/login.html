@@ -1,0 +1,10 @@
+<form action="/login" method="POST">
+  <input type="username" name="username" placeholder="Username">
+<input type="password" name="password" placeholder="Password">
+<input type="submit" value="Log in">
+</form>
+
+<br>
+{% if wrongLogin %}
+<p1>Wrong Credentials. Please try again.</p1>
+{% endif %}
