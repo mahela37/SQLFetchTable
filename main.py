@@ -2,8 +2,9 @@ from flask import Flask, flash, redirect, render_template, request, session, abo
 import os,time
 app = Flask(__name__)
 
+scrollAmount=10
 listStartIndex=0
-listEndIndex=3
+listEndIndex=scrollAmount
 returnData=[]
 returnDataLength=0
 
@@ -47,16 +48,17 @@ def do_admin_login():
 
 @app.route('/scrollPage',methods=['POST'])
 def scrollPage():
+    global scrollAmount
     global listStartIndex
     global listEndIndex
     global returnDataLength
     if((request.form['direction']=='forward')and(listEndIndex<returnDataLength)):
-        listStartIndex = listStartIndex + 3
-        listEndIndex = listEndIndex + 3
+        listStartIndex = listStartIndex + scrollAmount
+        listEndIndex = listEndIndex + scrollAmount
 
     if ((request.form['direction'] == 'backward')and(listStartIndex!=0)):
-        listStartIndex = listStartIndex - 3
-        listEndIndex = listEndIndex - 3
+        listStartIndex = listStartIndex - scrollAmount
+        listEndIndex = listEndIndex - scrollAmount
 
     #returnData = getSqlData()
     global returnData

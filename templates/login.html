@@ -1,10 +1,13 @@
-<form action="/login" method="POST">
-  <input type="username" name="username" placeholder="Username">
-<input type="password" name="password" placeholder="Password">
-<input type="submit" value="Log in">
-</form>
-
-<br>
-{% if wrongLogin %}
-<p1>Wrong Credentials. Please try again.</p1>
-{% endif %}
+<link rel="stylesheet" href='/static/login.css' />
+<div class="login-page">
+  <div class="form">
+    <form class="login-form" action="/login" method="POST">
+      <input class="userInput" type="text" name="username" placeholder="Username" autofocus>
+      <input class="userInput" type="password" name="password" placeholder="Password">
+      <input class="myButton" type="submit" value="Log in">
+	  {% if wrongLogin %}
+	  <p class="message">Wrong Credentials. Please try again.</p>
+	  {% endif %}
+    </form>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td{
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  border: 2px solid white;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+  height: 50px;
+  font-weight: bold;
+  border: 2px solid white;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+h2{
+	font-family: arial, sans-serif;
+	color:#4CAF50;
+	text-align: center;
+}
+
+.header {
+  border: 1px solid gray;
+  padding: 8px;
+  //background-image: linear-gradient(to bottom right, red, yellow);
+}
+
+
+form { 
+    width:35%;
+    float:left;
+    padding-left:5%;
+    padding-right:10%;
+}
+
+.myButton{
+  background: #76b852;
+  width: 50%;
+  border: 1%;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  cursor: pointer;
+  float: right;
+  
+}
+
+
