@@ -9,13 +9,12 @@
 	
 	<div class="header">
 		<h2>SQL Data LOG</h2>
-		<br>
-		<form action="/postRefreshPage" method="POST">
-		  <button class="myButton" name="refresh" type="submit" value="1">REFRESH PAGE</button>
+		<form class="refreshForm" action="/postRefreshPage" method="POST">
+		  <button class="myButton refreshBtn" name="refresh" type="submit" value="1">REFRESH PAGE</button>
 		</form>
-		<form action="/scrollPage" method="POST">
-		  <button class="myButton" name="direction" type="submit" value="forward">NEXT</button>
-		  <button class="myButton" name="direction" type="submit" value="backward">PREV</button>
+		<form class="scrollForm" action="/scrollPage" method="POST">
+		  <button class="myButton nextBtn" name="direction" type="submit" value="forward">NEXT</button>
+		  <button class="myButton prevBtn" name="direction" type="submit" value="backward">PREV</button>
 		</form>
 		<br><br><br>
 	</div>

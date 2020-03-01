@@ -31,17 +31,31 @@ h2{
 
 .header {
   border: 1px solid gray;
-  padding: 8px;
+  padding-bottom: 8px;
+  padding-top:2px;
   //background-image: linear-gradient(to bottom right, red, yellow);
+  background-color: white;
+  //margin-left:25%;
+  //margin-right:25%;
 }
 
 
-form { 
-    width:35%;
+.refreshForm { 
+    width:25%;
     float:left;
-    padding-left:5%;
-    padding-right:10%;
+    padding-left:0%;
+    padding-right:0%;
+	margin-left:10%;
+	margin-right:5%
 }
+
+.scrollForm { 
+    width:25%;
+    float:left;
+    padding-left:0%;
+    padding-right:0%;
+}
+
 
 .myButton{
   background: #76b852;
@@ -52,7 +66,14 @@ form {
   font-size: 14px;
   cursor: pointer;
   float: right;
+  //border-radius:6px;
   
 }
+
+.refreshBtn{
+	background: #6a8b5a;
+}
+
+
 
 
