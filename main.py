@@ -1,5 +1,5 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort
-import os,time
+import os,time,math
 app = Flask(__name__)
 
 scrollAmount=10
@@ -7,6 +7,8 @@ listStartIndex=0
 listEndIndex=scrollAmount
 returnData=[]
 returnDataLength=0
+pageNum=1
+pageMax=1
 
 #def for returning dummy sql data
 def getSqlData():
@@ -26,6 +28,9 @@ def getSqlData():
         ""
     global returnDataLength
     returnDataLength=len(returnData)
+    global pageMax
+    pageMax=math.ceil(float(returnDataLength)/scrollAmount)
+
 
     return returnData
 
@@ -42,7 +47,7 @@ def do_admin_login():
         global returnData
         returnData = getSqlData()
         trimmedData = returnData[listStartIndex:listEndIndex]
-        return render_template('table.html', dataArray=trimmedData)
+        return render_template('table.html', dataArray=trimmedData,pageNum=pageNum,pageMax=pageMax)
     else:
         return render_template('login.html',wrongLogin=1)
 
@@ -55,15 +60,19 @@ def scrollPage():
     if((request.form['direction']=='forward')and(listEndIndex<returnDataLength)):
         listStartIndex = listStartIndex + scrollAmount
         listEndIndex = listEndIndex + scrollAmount
+        global pageNum
+        pageNum=pageNum+1
 
     if ((request.form['direction'] == 'backward')and(listStartIndex!=0)):
         listStartIndex = listStartIndex - scrollAmount
         listEndIndex = listEndIndex - scrollAmount
+        global pageNum
+        pageNum=pageNum-1
 
     #returnData = getSqlData()
     global returnData
     trimmedData = returnData[listStartIndex:listEndIndex]
-    return render_template('table.html', dataArray=trimmedData)
+    return render_template('table.html', dataArray=trimmedData,pageNum=pageNum,pageMax=pageMax)
 
 @app.route('/refreshPage')
 def refreshPage():
@@ -73,14 +82,14 @@ def refreshPage():
     global returnData
     returnData = getSqlData()
     trimmedData = returnData[listStartIndex:listEndIndex]
-    return render_template('table.html', dataArray=trimmedData)
+    return render_template('table.html', dataArray=trimmedData,pageNum=pageNum,pageMax=pageMax)
 
 @app.route('/postRefreshPage',methods=['POST'])
 def postRefreshPage():
     global returnData
     returnData = getSqlData()
     trimmedData = returnData[listStartIndex:listEndIndex]
-    return render_template('table.html', dataArray=trimmedData)
+    return render_template('table.html', dataArray=trimmedData,pageNum=pageNum,pageMax=pageMax)
 
 
 if __name__ == "__main__":
